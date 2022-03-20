@@ -1,16 +1,17 @@
 ## 目录
 
-- [Docker 容器化部署](#Docker-容器化部署)
+- [编译安装](./docs/编译安装.md)
+- [容器化部署](#容器化部署)
   - [Docker](#Docker)
   - [Dockerfile](#Dockerfile)
-    - [编译安装](./docs/编译安装.md)
-    - [语法高亮](./docs/语法高亮.md)
   - [docker-compose.yml](#docker-compose.yml)
-- [Nginx 配置文件解析](#Nginx-配置文件解析)
-  - [配置文件目录](#配置文件目录)
-  - [nginx.conf](#nginx.conf)
+- [常用命令](#常用命令)
+- [配置解析](#配置解析)
+  - [文件目录](#文件目录)
+  - [默认配置](#默认配置)
+- [语法高亮](./docs/语法高亮.md)
 
-## Docker 容器化部署
+## 容器化部署
 
 ### Docker
 
@@ -33,7 +34,7 @@ $ systemctl start docker
 
 #### 镜像加速器
 
-查看是否在 docker.service 文件中配置过镜像地址。
+查看是否在 `docker.service` 文件中配置过镜像地址。
 
 ```bash
 $ systemctl cat docker | grep '\-\-registry\-mirror'
@@ -167,9 +168,9 @@ $ nginx -s quit       平滑停止服务
 $ nginx -s reload     平滑重启服务
 ```
 
-## Nginx 配置文件解析
+## 配置解析
 
-### 配置文件目录
+### 文件目录
 
 Nginx 默认配置目录: `/usr/local/nginx/conf`
 
@@ -195,7 +196,7 @@ $ # tree -L 1
 `-- win-utf # KOI8-R 编码转换的映射文件
 ```
 
-### nginx.conf
+### 默认配置
 
 ```bash
 #user  nobody;
