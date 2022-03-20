@@ -13,3 +13,4 @@ services:
       - 443:443
     volumes:
       - ./nginx.conf:/usr/local/nginx/conf/nginx.conf
+      - ./njs/dist:/usr/local/nginx/njs
