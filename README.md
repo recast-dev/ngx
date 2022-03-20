@@ -31,6 +31,45 @@ $ systemctl enable docker
 $ systemctl start docker
 ```
 
+#### 镜像加速器
+
+查看是否在 docker.service 文件中配置过镜像地址。
+
+```bash
+$ systemctl cat docker | grep '\-\-registry\-mirror'
+```
+
+若该命令有输出，则执行 `$ systemctl cat docker` 命令以查看 `ExecStart=` 出现的位置，并修改对应的文件内容去掉 `--registry-mirror` 参数及其值。
+
+```bash
+$ vim /etc/docker/daemon.json
+```
+
+```diff
++{
++  "registry-mirrors": [
++    "https://hub-mirror.c.163.com",
++    "https://mirror.baidubce.com"
++  ]
++}
+```
+
+重启服务:
+
+```bash
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+```
+
+检查加速器是否生效:
+
+```bash
+$ docker info
+Registry Mirrors:
+  https://hub-mirror.c.163.com/
+  https://mirror.baidubce.com/
+```
+
 ### Dockerfile
 
 ```dockerfile
