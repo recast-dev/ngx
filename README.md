@@ -318,6 +318,24 @@ http {
 }
 ```
 
+### 隐藏版本号
+
+`nginx.conf`
+
+```diff
+http {
++   server_tokens off;
+    include       mime.types;
+    default_type  application/octet-stream;
+```
+
+`fastcgi_params`
+
+```diff
+-fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
++fastcgi_param  SERVER_SOFTWARE    nginx;
+```
+
 ## njs scripting language
 
 `nginx.conf`

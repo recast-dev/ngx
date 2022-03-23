@@ -13,4 +13,6 @@ services:
       - 443:443
     volumes:
       - ./nginx.conf:/usr/local/nginx/conf/nginx.conf
-      - ./njs/dist:/usr/local/nginx/njs
+      - ./fastcgi_params:/usr/local/nginx/conf/fastcgi_params
+      - ./conf.d:/usr/local/nginx/conf/conf.d
+      - ./njs/dist:/usr/local/nginx/conf/scripts
