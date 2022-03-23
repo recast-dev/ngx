@@ -16,11 +16,12 @@ RUN mv $(find /usr/local/src -name "njs-[0-9a-f]*") njs
 WORKDIR /usr/local/src/nginx-${NGINX_VERSION}
 RUN ./configure \
     --prefix=/usr/local/nginx \
-    --with-http_ssl_module \
+    --with-pcre \
     --with-stream \
-    --with-http_image_filter_module \
-    --with-http_realip_module \
+    --with-http_ssl_module \
     --with-stream_ssl_module \
+    --with-http_realip_module \
+    --with-http_image_filter_module \
     --add-dynamic-module=/usr/local/src/njs/nginx
 RUN make
 RUN make install
